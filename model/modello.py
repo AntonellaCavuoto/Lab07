@@ -109,6 +109,7 @@ class Model:
                     parziale.append(candidate)
                     # ricorsione
                     self._ricorsione(parziale, lista_situazioni)
+
                     # backtracking
                     parziale.pop()
 
