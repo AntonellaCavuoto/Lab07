@@ -42,7 +42,25 @@ class Controller:
 
     def handle_sequenza(self, e):
         self._view.lst_result.controls.clear()
+        mese = self._view.dd_mese.value
 
+        if mese is None:
+            self._view.create_alert("Attenzione! Selezionare un mese")
+            return
+
+        lista = self._model.calcola_sequenza(mese)
+        situazioni = lista[0]
+        costo = lista[1]
+
+        self._view.lst_result.controls.append(ft.Text(f"La sequenza ottina ha costo {costo} ed è:"))
+
+        for situazione in situazioni:
+            localita = situazione.localita
+            data = situazione.data
+            umidita = situazione.umidita
+            self._view.lst_result.controls.append(
+                ft.Text(f"[{localita} - {data}] Umidità = {umidita}"))
+            self._view.update_page()
 
     def read_mese(self, e):
         self._mese = int(e.control.value)

@@ -26,7 +26,7 @@ class Model:
         self.costo_ottimo = -1
         self.soluzione_ottima = []
         self._ricorsione([], situazioni)
-        return self.soluzione_ottima, self.costo_ottimo
+        return [self.soluzione_ottima, self.costo_ottimo]
 
     def trova_possibili_step(self, parziale, lista_situazioni):
         giorno = len(parziale) + 1  # se parziale ha lunghezza uno, cerco il giorno due
